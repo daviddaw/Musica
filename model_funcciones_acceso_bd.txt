@@ -1,0 +1,251 @@
++--------------------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Email , LastName FROM customer WHERE Email = 'bjorn.hansen@yahoo.n
+o' and LastName = 'Hansen';
++-----------------------+----------+
+| Email                 | LastName |
++-----------------------+----------+
+| bjorn.hansen@yahoo.no | Hansen   |
++-----------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Email , LastName FROM customer WHERE Email = 'bjorn.hansen@yahoo.n
+o' and LastName = 'Hansen';
++-----------------------+----------+
+| Email                 | LastName |
++-----------------------+----------+
+| bjorn.hansen@yahoo.no | Hansen   |
++-----------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Email , LastName FROM customer WHERE Email = 'bjorn.hansen@yahoo.n
+o' and LastName = 'Hansen';
++-----------------------+----------+
+| Email                 | LastName |
++-----------------------+----------+
+| bjorn.hansen@yahoo.no | Hansen   |
++-----------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employees          |
+| empresa            |
+| empresa1           |
+| musica             |
+| mysql              |
+| pedidos            |
+| performance_schema |
+| portalmusical      |
+| sakila             |
+| test               |
++--------------------+
+11 rows in set (0.02 sec)
+
+
+
+
+mysql> use
+ERROR:
+USE must be followed by a database name
+mysql> use musica
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_musica |
++------------------+
+| album            |
+| artist           |
+| customer         |
+| genre            |
+| invoice          |
+| invoiceline      |
+| mediatype        |
+| track            |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> show tables:
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near ':' at
+ line 1
+mysql> show tables;
++------------------+
+| Tables_in_musica |
++------------------+
+| album            |
+| artist           |
+| customer         |
+| genre            |
+| invoice          |
+| invoiceline      |
+| mediatype        |
+| track            |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> desc costumer;
+ERROR 1146 (42S02): Table 'musica.costumer' doesn't exist
+mysql> desc customer;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| CustomerId   | int(11)     | NO   | PRI | NULL    |       |
+| FirstName    | varchar(40) | NO   |     | NULL    |       |
+| LastName     | varchar(20) | NO   |     | NULL    |       |
+| Company      | varchar(80) | YES  |     | NULL    |       |
+| Address      | varchar(70) | YES  |     | NULL    |       |
+| City         | varchar(40) | YES  |     | NULL    |       |
+| State        | varchar(40) | YES  |     | NULL    |       |
+| Country      | varchar(40) | YES  |     | NULL    |       |
+| PostalCode   | varchar(10) | YES  |     | NULL    |       |
+| Phone        | varchar(24) | YES  |     | NULL    |       |
+| Fax          | varchar(24) | YES  |     | NULL    |       |
+| Email        | varchar(60) | NO   |     | NULL    |       |
+| SupportRepId | int(11)     | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+13 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_musica |
++------------------+
+| album            |
+| artist           |
+| customer         |
+| genre            |
+| invoice          |
+| invoiceline      |
+| mediatype        |
+| track            |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> desc artist;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| ArtistId | int(11)      | NO   | PRI | NULL    |       |
+| Name     | varchar(120) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> desc album;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| AlbumId  | int(11)      | NO   | PRI | NULL    |       |
+| Title    | varchar(160) | NO   |     | NULL    |       |
+| ArtistId | int(11)      | NO   | MUL | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_musica |
++------------------+
+| album            |
+| artist           |
+| customer         |
+| genre            |
+| invoice          |
+| invoiceline      |
+| mediatype        |
+| track            |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> desc genre;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| GenreId | int(11)      | NO   | PRI | NULL    |       |
+| Name    | varchar(120) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc invoice;
++-------------------+---------------+------+-----+---------+-------+
+| Field             | Type          | Null | Key | Default | Extra |
++-------------------+---------------+------+-----+---------+-------+
+| InvoiceId         | int(11)       | NO   | PRI | NULL    |       |
+| CustomerId        | int(11)       | NO   | MUL | NULL    |       |
+| InvoiceDate       | datetime      | NO   |     | NULL    |       |
+| BillingAddress    | varchar(70)   | YES  |     | NULL    |       |
+| BillingCity       | varchar(40)   | YES  |     | NULL    |       |
+| BillingState      | varchar(40)   | YES  |     | NULL    |       |
+| BillingCountry    | varchar(40)   | YES  |     | NULL    |       |
+| BillingPostalCode | varchar(10)   | YES  |     | NULL    |       |
+| Total             | decimal(10,2) | NO   |     | NULL    |       |
++-------------------+---------------+------+-----+---------+-------+
+9 rows in set (0.02 sec)
+
+mysql> desc invoiceline;
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| InvoiceLineId | int(11)       | NO   | PRI | NULL    |       |
+| InvoiceId     | int(11)       | NO   | MUL | NULL    |       |
+| TrackId       | int(11)       | NO   | MUL | NULL    |       |
+| UnitPrice     | decimal(10,2) | NO   |     | NULL    |       |
+| Quantity      | int(11)       | NO   |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc mediatype;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| MediaTypeId | int(11)      | NO   | PRI | NULL    |       |
+| Name        | varchar(120) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc track;
++--------------+---------------+------+-----+---------+-------+
+| Field        | Type          | Null | Key | Default | Extra |
++--------------+---------------+------+-----+---------+-------+
+| TrackId      | int(11)       | NO   | PRI | NULL    |       |
+| Name         | varchar(200)  | NO   |     | NULL    |       |
+| AlbumId      | int(11)       | YES  | MUL | NULL    |       |
+| MediaTypeId  | int(11)       | NO   | MUL | NULL    |       |
+| GenreId      | int(11)       | YES  | MUL | NULL    |       |
+| Composer     | varchar(220)  | YES  |     | NULL    |       |
+| Milliseconds | int(11)       | NO   |     | NULL    |       |
+| Bytes        | int(11)       | YES  |     | NULL    |       |
+| UnitPrice    | decimal(10,2) | NO   |     | NULL    |       |
++--------------+---------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from  customer limit 1;
++------------+-----------+-----------+------------------------------------------
+--------+---------------------------------+---------------------+-------+-------
+--+------------+--------------------+--------------------+----------------------
++--------------+
+| CustomerId | FirstName | LastName  | Company
+        | Address                         | City                | State | Countr
+y | PostalCode | Phone              | Fax                | Email
+| SupportRepId |
++------------+-----------+-----------+------------------------------------------
+--------+---------------------------------+---------------------+-------+-------
+--+------------+--------------------+--------------------+----------------------
++--------------+
+|          1 | Luís      | Gonçalves | Embraer - Empresa Brasileira de Aeronáuti
+ca S.A. | Av. Brigadeiro Faria Lima, 2170 | São José dos Campos | SP    | Brazil
+  | 12227-000  | +55 (12) 3923-5555 | +55 (12) 3923-5566 | luisg@embraer.com.br
+|            3 |
++------------+-----------+-----------+------------------------------------------
+--------+---------------------------------+---------------------+-------+-------
+--+------------+--------------------+--------------------+----------------------
++--------------+
+1 row in set (0.00 sec)
+
+
+select * from invoice where CustomerId=1;
+
+
